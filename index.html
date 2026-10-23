@@ -1,233 +1,45 @@
 <!doctype html>
-<html lang="en-us">
-
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <title>WTUMC</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="manifest" href="manifest.json" crossorigin="use-credentials" />
-  <link rel="icon" href="icons/icon-72x72.png" sizes="72x72" type="image/png" />
-  <link rel="icon" href="icons/icon-96x96.png" sizes="96x96" type="image/png" />
-  <link rel="icon" href="icons/icon-128x128.png" sizes="128x128" type="image/png" />
-  <link rel="icon" href="icons/icon-144x144.png" sizes="144x144" type="image/png" />
-  <link rel="icon" href="icons/icon-152x152.png" sizes="152x152" type="image/png" />
-  <link rel="icon" href="icons/icon-192x192.png" sizes="192x192" type="image/png" />
-  <link rel="icon" href="icons/icon-384x384.png" sizes="384x384" type="image/png" />
-  <link rel="icon" href="icons/icon-512x512.png" sizes="512x512" type="image/png" />
-  <!-- ios support -->
-  <link rel="apple-touch-icon" href="icons/icon-72x72.png" sizes="72x72" type="image/png" />
-  <link rel="apple-touch-icon" href="icons/icon-96x96.png" sizes="96x96" type="image/png" />
-  <link rel="apple-touch-icon" href="icons/icon-128x128.png" sizes="128x128" type="image/png" />
-  <link rel="apple-touch-icon" href="icons/icon-144x144.png" sizes="144x144" type="image/png" />
-  <link rel="apple-touch-icon" href="icons/icon-152x152.png" sizes="152x152" type="image/png" />
-  <link rel="apple-touch-icon" href="icons/icon-192x192.png" sizes="192x192" type="image/png" />
-  <link rel="apple-touch-icon" href="icons/icon-384x384.png" sizes="384x384" type="image/png" />
-  <link rel="apple-touch-icon" href="icons/icon-512x512.png" sizes="512x512" type="image/png" />
-
-  <meta name="theme-color" content="#000" />
-
-  <style>
-    html {
-      background: #444;
-      font-family: sans-serif;
-    }
-
-    body, html {
-      overscroll-behavior: none;
-    }
-
-    #canvas, #overlayDiv {
-      position: absolute;
-      top: 0px;
-      left: 0px;
-
-      width: 100%;
-      height: 100%;
-
-      border: 0 none;
-    }
-
-    #canvas {
-      background: #000;
-    }
-
-    .visible {
-      visibility: visible;
-      opacity: 1.0;
-      transition: opacity .1s linear;
-    }
-
-    .hidden {
-      visibility: hidden;
-      opacity: 0;
-      transition: visibility 0s .25s, opacity .25s linear;
-    }
-
-    #statusDiv, #inputDiv {
-      background: rgba(0, 0, 0, 0.75);
-      width: 50%;
-      margin: auto;
-      min-width: 340px;
-      padding: 10px;
-
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-
-      border-radius: 0 0 5px 5px;
-    }
-
-    #statusTextDiv {
-      overflow: auto;
-      max-height: 40vh;
-      color: #ccc;
-      font-size: 14px;
-    }
-
-    #statusProgress {
-      display: none;
-      width: 100%;
-    }
-
-    #inputDiv {
-      width: 65%;
-      padding-left: 10px;
-      padding-right: 20px;
-    }
-
-    #inputPrompt {
-      color: #eee;
-      font-size: 150%;
-      margin-bottom: 1em;
-      margin-top: 1em;
-
-    }
-
-    #inputText {
-      width: 100%;
-      font-size: 175%;
-      padding: 5px;
-      background: inherit;
-      color: #eee;
-    }
-
-    #inputText:focus {
-      color: #ffffff;
-    }
-
-    #ContextContainer {
-      position: absolute;
-      left: 0px;
-      top: 0px;
-      color: white;
-    }
-
-    #ContextContainer.shown {
-      background: rgba(0, 0, 0, 0.5);
-      border-radius: 0px 0px 5px 0px;
-    }
-
-    #ContextButton {
-      text-decoration: none;
-      color: lightgrey;
-      font-size: xx-large;
-      cursor: pointer;
-      user-select: none;
-      -moz-user-select: none;
-      padding: 10px 10px;
-      opacity: .75;
-    }
-
-    #ContextButton:focus {
-      outline: none;
-      color: #ffffff;
-      opacity: 1.0;
-    }
-
-    #ContextMenu a {
-      text-decoration: none;
-      color: lightgrey;
-      background: #444;
-      height: 48px;
-      width: 250px;
-      border-radius: 5px;
-      border: 1px solid lightgrey;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 5px 5px;
-      opacity: 1.0;
-    }
-
-    #ContextMenu a:hover {
-      text-decoration: none;
-      background: #666666;
-      color: #ffffff
-    }
-
-    #presplash {
-        position: absolute;
-        top: 0;
-        left: 0;
-        display: block;
-        margin: auto;
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-    }
-
-  </style>
-
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="poohpiggy — Electrical Engineering & Automation student. Software, hardware, and small things built out of curiosity.">
+<meta name="theme-color" content="#f6f5f1">
+<title>poohpiggy — A personal corner</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-  <canvas id="canvas" oncontextmenu="event.preventDefault()" tabindex=-1></canvas>
-  <div id="overlayDiv"></div>
-
-  <img id="presplash" src="web-presplash.jpg">
-
-  <div id="ContextContainer">
-    <a id="ContextButton">&#8801;</a><br />
-    <div id="ContextMenu" style="display: none;">
-      <input id="ID_SavegamesImport" type="file" onchange="onSavegamesImport(this)" accept="application/zip"
-        style=display:none></input>
-      <a href="javascript:document.getElementById('ID_SavegamesImport').click();">Import Saves</a>
-      <a href="javascript:onSavegamesExport();">Export Saves</a>
-      <a href="javascript:FSDownload('/log.txt', 'text/plain');">Download Log</a>
-      <a href="https://www.renpy.org/" target="_blank">
-          Powered by Ren'Py
-      </a>
-      </span>
-    </div>
-  </div>
-
-  <div id="statusDiv" class="hidden">
-    <div id="statusTextDiv"></div>
-    <progress id="statusProgress" value="0" max="100"></progress>
-  </div>
-
-  <div id="inputDiv" class="hidden">
-    <form id="inputForm">
-      <div id="inputPrompt"></div>
-      <input id="inputText" type="text">
-    </form>
-  </div>
-
-  <script>
-      // The URL to game.zip, relative to the URL of this file.
-      window.gameZipURL = 'game.zip';
-
-      // Register the service worker.
-      if (navigator.serviceWorker) {
-          if (!navigator.serviceWorker.controller) {
-              navigator.serviceWorker.register('./service-worker.js', { updateViaCache: 'all' });
-          }
-      }
-  </script>
-  <script src="renpy-pre.js"></script>
-  <script async type="text/javascript" src="renpy.js"></script>
+<a class="skip" href="#main">Skip to content</a>
+<div class="page">
+<header><a class="wordmark" href="./" aria-label="poohpiggy home">p<span>.</span></a><nav aria-label="Main navigation"><a href="#about">About</a><a href="#work">Work</a><a href="#elsewhere">Elsewhere <span aria-hidden="true">↗</span></a></nav></header>
+<main id="main">
+<section class="intro" id="about" aria-labelledby="intro-title">
+<p class="eyebrow">A PERSONAL CORNER OF THE INTERNET</p>
+<h1 id="intro-title">Hi, I'm poohpiggy<span>.</span></h1>
+<p class="lead">A little code.<br>A little circuitry.<br>A lot of curiosity.</p>
+<div class="intro-bottom"><p>I'm an Electrical Engineering &amp; Automation student at Wuhan Textile University. I enjoy tinkering with software and hardware, figuring things out, and making everyday devices work a little better.</p><a class="text-link" href="https://github.com/poohpiggy">Find me on GitHub <span aria-hidden="true">↗</span></a></div>
+</section>
+<section class="work" id="work" aria-labelledby="work-title">
+<div class="section-heading"><h2 id="work-title">Things I've made</h2><span class="muted">01 — 02</span></div>
+<a class="project" href="wtumc/"><div class="project-number">01</div><div class="project-content"><div class="project-top"><h3>WTUMC</h3><span class="tag">VISUAL NOVEL</span></div><p>A small visual novel I made with Ren’Py. Step into the story, right in your browser.</p><span class="project-action">Play the game <span aria-hidden="true">↗</span></span></div><span class="project-arrow" aria-hidden="true">↗</span></a>
+<a class="project" href="https://github.com/poohpiggy/AutoTouchPadCtrl"><div class="project-number">02</div><div class="project-content"><div class="project-top"><h3>AutoTouchPadCtrl</h3><span class="tag">UTILITY</span></div><p>A lightweight PowerShell script that toggles the touchpad in convertible mode on Windows Chromebooks. One less accidental tap.</p><span class="project-action">View the source <span aria-hidden="true">↗</span></span></div><span class="project-arrow" aria-hidden="true">↗</span></a>
+</section>
+<section class="details" aria-labelledby="details-title"><h2 id="details-title">At the workbench</h2><div><p>Mostly <strong>C</strong> and <strong>Python</strong>, with a little <strong>PowerShell</strong> for the practical stuff. Interested in the places where software meets hardware.</p><p class="muted">Small experiments. Useful tools. Learning by doing.</p></div></section>
+<section class="elsewhere" id="elsewhere" aria-labelledby="elsewhere-title"><div><p class="eyebrow">ELSEWHERE</p><h2 id="elsewhere-title">Let's stay in touch.</h2></div><div class="social-links"><a href="https://github.com/poohpiggy">GitHub <span aria-hidden="true">↗</span></a><a href="https://space.bilibili.com/403805887">Bilibili <span aria-hidden="true">↗</span></a></div></section>
+</main>
+<footer><span>© poohpiggy</span><span>Made with curiosity.</span><a href="#main">Back to top ↑</a></footer>
+</div>
+<script>
+// Retire the former game's root-scoped worker; leave game saves untouched.
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.getRegistrations().then(registrations => {
+    const rootScope = new URL('./', location.href).href;
+    for (const registration of registrations) {
+      if (registration.scope === rootScope) registration.unregister().catch(console.error);
+    }
+  }).catch(console.error);
+}
+</script>
 </body>
-
 </html>
