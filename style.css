@@ -10,8 +10,6 @@
   --line: #dcd9e7;
   --accent: #5342a3;
   --on-accent: #fff;
-  --portrait-line: #cabfeb;
-  --portrait-glow: #e3dcf7;
 }
 :root[data-theme="dark"] {
   color-scheme: dark;
@@ -23,8 +21,6 @@
   --line: #393449;
   --accent: #c9b8ff;
   --on-accent: #211935;
-  --portrait-line: #4e416a;
-  --portrait-glow: #322546;
 }
 
 * { box-sizing: border-box; }
@@ -141,24 +137,12 @@ img { display: block; max-width: 100%; }
   font: .875rem/1.5 Consolas, ui-monospace, monospace;
 }
 .portrait {
-  display: grid;
-  place-items: center;
-  justify-self: end;
-  width: min(100%, 23rem);
-  aspect-ratio: 1.08;
-  background:
-    radial-gradient(circle at center, var(--portrait-glow), transparent 75%),
-    radial-gradient(circle, var(--portrait-line) 1px, transparent 1.2px) 0 0 / 12px 12px,
-    var(--surface-alt);
-  border: 1px solid var(--line);
-  border-radius: 1.4rem;
+  justify-self: center;
+  width: min(72%, 16rem);
 }
 .portrait img {
-  width: 57%;
+  width: 100%;
   height: auto;
-  padding: .43rem;
-  background: var(--surface);
-  border: 1px solid var(--portrait-line);
   border-radius: 1.5rem;
   box-shadow: 0 14px 32px #21182c29;
   transform: rotate(-7deg);
@@ -282,8 +266,8 @@ footer {
   .navigation { flex: 0 0 100%; order: 1; }
   .intro { grid-template-columns: minmax(0, 1fr); }
   .intro h1 { font-size: clamp(2.9rem, 12vw, 4.5rem); }
-  .portrait { justify-self: start; width: min(100%, 16rem); aspect-ratio: 1.47; }
-  .portrait img { width: 48%; border-radius: 1rem; }
+  .portrait { justify-self: start; width: min(100%, 9.2rem); margin: .35rem 0 .45rem .55rem; }
+  .portrait img { border-radius: 1rem; }
   .featured, .ae-tiles, .tool-tiles, .setup-tiles { grid-template-columns: minmax(0, 1fr); }
   .featured { gap: 1.2rem; }
 }
