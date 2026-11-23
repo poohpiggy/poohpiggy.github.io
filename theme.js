@@ -10,7 +10,7 @@
     const night = hour < 7 || hour >= 19;
 
     root.dataset.theme = night ? 'dark' : 'light';
-    themeColor.content = night ? '#171c18' : '#f6f5f1';
+    themeColor.content = night ? '#171622' : '#f4f4f8';
 
     const untilNextMinute = 60_000 - (now.getSeconds() * 1000 + now.getMilliseconds());
     refreshTimer = window.setTimeout(updateTheme, untilNextMinute);
